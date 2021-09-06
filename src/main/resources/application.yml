@@ -1,45 +1,9 @@
-server:
-  port: 8282
-  servlet:
-    context-path: /fornecedor
-       
----
-spring:
-  profiles:
-    active:
-    - prod
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://ec2-44-195-247-84.compute-1.amazonaws.com:5432/d2hekdh6fqc6v0
-    username: oqyktfcyubgcht
-    password: c2f8afc215489769d52ea262373b3213f8996c1108b4c719492cc4f9c620a7a7
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: create
-    database-platform: org.hibernate.dialect.PostgreSQLDialect  
-    generate-ddl: false    
-    defer-datasource-initialization: true
-  devtools:
-    add-properties: false
-  autoconfigure:
-    exclude:
-    - true
-    
-server:
-  error:
-    include-message: always
-    include-binding-errors: always
-    include-stacktrace: on-param
-    include-exception: true
- 
+server:  port: 8081
+spring:  application:    name: 'fornecedor'  cloud:    discovery:      enabled: true  datasource:    driver-class-name: org.postgresql.Driver    url: jdbc:postgresql://ec2-44-195-247-84.compute-1.amazonaws.com:5432/d2hekdh6fqc6v0    username: oqyktfcyubgcht    password: c2f8afc215489769d52ea262373b3213f8996c1108b4c719492cc4f9c620a7a7  jpa:    show-sql: true    hibernate:      ddl-auto: none    database-platform: org.hibernate.dialect.PostgreSQLDialect      generate-ddl: false        defer-datasource-initialization: true
 eureka:
   client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URL:http://localhost:8761}/eureka/
     register-with-eureka: true
     fetch-registry: true
-  instance:
-    hostname: ${DOMAIN_NAME:localhost}
-    nonSecurePort: 80
-    appname: fornecedor 
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:8761}/eureka/
+       

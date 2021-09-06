@@ -1,4 +1,4 @@
-package com.microservices.loja.domain;
+package com.microservices.fornecedor.domain;
 
 
 

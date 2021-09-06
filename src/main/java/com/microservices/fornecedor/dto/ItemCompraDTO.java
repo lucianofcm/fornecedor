@@ -1,6 +1,4 @@
-package com.microservices.loja.dto;
-
-import java.util.List;
+package com.microservices.fornecedor.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CompraDTO {
-	private List<ItemCompraDTO> itensCompra;
+public class ItemCompraDTO {
+	private Long id;
+	private String nome;
+	private Integer qtde;
 }
