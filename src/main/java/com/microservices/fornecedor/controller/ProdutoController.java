@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.microservices.fornecedor.domain.Produto;
-import com.microservices.fornecedor.repository.ProdutoRepo;
+import com.microservices.fornecedor.dto.ProdutoDTO;
+import com.microservices.fornecedor.service.ProdutoService;
 
 @RestController
 @RequestMapping("/produtos")
 public class ProdutoController {
 
-	ProdutoRepo produtoRepo;
+	private ProdutoService produtoService;
 
-	public ProdutoController(ProdutoRepo produtoRepo) {
-		this.produtoRepo = produtoRepo;
+	public ProdutoController(ProdutoService produtoService) {
+		this.produtoService = produtoService;
 	}
 
 	@GetMapping("/")
-	public ResponseEntity<List<Produto>> listarProdutos() {
-		return new ResponseEntity<>(produtoRepo.findAll(), HttpStatus.OK);
+	public ResponseEntity<List<ProdutoDTO>> listarProdutos() {
+		return new ResponseEntity<>(produtoService.listarProdutos(), HttpStatus.OK);
 	}
 }
